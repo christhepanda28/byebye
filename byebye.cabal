@@ -1,0 +1,22 @@
+
+name: byebye
+version: 1.0.0.0
+license: MIT
+license-file: LICENSE
+stability: stable
+cabal-version: >= 1.6
+build-type: Simple
+
+Description:
+  This is a simple Logout program I wrote to help Learn Haskell. 
+
+flag threaded
+  default: False
+
+executable byebye
+  hs-source-dirs: src
+  main-is: Main.hs
+  build-depends: base, gi-gtk == 3.0.*, gi-gtk-hs, haskell-gi-base, text, process
+
+  if flag(threaded)
+     ghc-options: -threaded
