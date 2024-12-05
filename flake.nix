@@ -34,8 +34,26 @@
         legacyPackages = pkgs;
 
         packages = flake.packages // {default = flake.packages."byebye:exe:byebye";};
-      });
+      })
+    // {
+      # NixOS module for system-wide installation
+      nixosModules.byebye = { config, lib, pkgs, ... }: 
+      with lib; {
+        options.programs.byebye = {
+          enable = mkEnableOption "ByeBye logout utility";
 
+          package = mkOption {
+            type = types.package;
+            default = self.packages.x86_64-linux.default;
+            description = "ByeBye package to use";
+          };
+        };
+
+        config = mkIf config.services.byebye.enable {
+          environment.systemPackages = [ self.packages.x86_64-linux.default ];
+        };
+      };
+  
   # --- Flake Local Nix Configuration ----------------------------
   nixConfig = {
     # This sets the flake to use the IOG nix cache.
