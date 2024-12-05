@@ -54,7 +54,7 @@
             };
           };
 
-          config = mkIf config.services.byebye.enable {
+          config = mkIf config.programs.byebye.enable {
             environment.systemPackages = [self.packages.x86_64-linux.default];
           };
         };
