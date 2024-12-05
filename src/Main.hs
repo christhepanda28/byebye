@@ -2,6 +2,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where 
 
+
+import Paths_byebye
 import qualified GI.Gtk as Gtk
 import Data.GI.Base
 import qualified Data.Text as T
@@ -15,7 +17,8 @@ type ButtonList =  [(Name, Image, Command)]
 
 mkButtons :: Gtk.Grid -> Gtk.Window -> ButtonList -> IO ()
 mkButtons grid win buttonlist = mapM_ (\(position, (name, image, command)) -> do
-    img <- Gtk.imageNewFromFile image
+    imagePath <- getDataFileName image
+    img <- Gtk.imageNewFromFile imagePath
     btn <- Gtk.buttonNew
     Gtk.buttonSetRelief btn Gtk.ReliefStyleNone
     Gtk.buttonSetImage btn $ Just img
