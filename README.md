@@ -19,7 +19,7 @@ Add the flake to your NixOS configuration (`/etc/nixos/configuration.nix`):
 {
   inputs = {
     # Your existing inputs
-    byebye.url = "github:yourusername/byebye"; # Replace with actual repository
+    byebye.url = "github:christhepanda28/byebye";
   };
 
   outputs = { self, nixpkgs, byebye, ... }@inputs: {
