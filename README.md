@@ -40,15 +40,10 @@ Add the flake to your NixOS configuration (`/etc/nixos/configuration.nix`):
 
 ### Using Nix Flakes
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/byebye.git
-   cd byebye
-   ```
 
-2. Build and run the application:
+1. Build and run the application:
    ```bash
-   nix run 
+   nix run github:christhepanda28/byebye 
    ```
 
 ### Building from Source
