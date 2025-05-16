@@ -18,7 +18,7 @@
         haskellNix.overlay
         (final: prev: {
           hixProject = final.haskell-nix.hix.project {
-            src = ./.;
+            src = builtins.path { path = ./.; name = "source"; };
             evalSystem = "x86_64-linux";
           };
         })
